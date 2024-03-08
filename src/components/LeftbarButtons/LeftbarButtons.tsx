@@ -36,7 +36,7 @@ const LeftbarButtons = () => {
                      width: "100%",
                      height: "100%",
                      padding: "10px",
-                     paddingTop: "20px",
+                     paddingTop: "10px",
                   }}
                   key={item + " " + index}
                >
@@ -47,7 +47,7 @@ const LeftbarButtons = () => {
                         alignItems: "center",
                         alignContent: "start",
                         flexDirection: "row",
-                        padding: "5px 10px",
+                        padding: "5px",
                         width: "90%",
                      }}
                   >
@@ -64,7 +64,7 @@ const LeftbarButtons = () => {
                      <Typography
                         sx={{
                            color: "gray",
-                           fontSize: "18px",
+                           fontSize: "14px",
                            marginLeft: "10px ",
                         }}
                      >
@@ -88,7 +88,7 @@ const LeftbarButtons = () => {
                      flexDirection: "column",
                      width: "100%",
                      height: "100%",
-                     padding: "15px",
+                     padding: "8px",
                   }}
                   key={item + " " + index}
                >
@@ -142,7 +142,7 @@ const LeftbarButtons = () => {
                      <Typography
                         sx={{
                            color: "gray",
-                           fontSize: "18px",
+                           fontSize: "14px",
                            marginLeft: "10px ",
                         }}
                      >
