@@ -6,15 +6,17 @@ const Leftbar = () => {
   return (
     <Stack
       sx={{
-        width: { xs: "0px", sm: "25%", md: "20%" },
+        width: { xs: "0px", sm: "22%", md: "15%" },
         height: "100%",
         minHeight: "90vh",
         backgroundColor: "rgb(28,27,34)",
         margin: "10px",
-        display: { xs: "none", sm: "flex", md: "flex" },
+        display: { xs: "none", sm: "none", md: "flex" },
+        // justifyContent: "center",
+        // alignItems: "center",
         borderRadius: "10px",
-        //   position: "fixed",
-        //   top: "300px",
+        position: "fixed",
+        top: "100px",
       }}
     >
       <LeftbarButtons />

@@ -11,7 +11,7 @@ const CustomCard = ({ title, description }: any) => {
   return (
     <Card
       sx={{
-        width: "320px",
+        width: "300px",
         marginTop: "20px",
         borderRadius: "20px",
       }}

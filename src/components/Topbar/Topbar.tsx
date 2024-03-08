@@ -24,7 +24,7 @@ const CustomButton = styled("button")({
 
 const Topbar = () => {
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "rgb(28,27,34)" }}>
+    <AppBar position="fixed" sx={{ backgroundColor: "rgb(28,27,34)" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: "flex-end" }}>
           <Box
