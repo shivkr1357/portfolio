@@ -2,6 +2,7 @@
 import {
    BACKEND_ITEMS,
    DATABASE_ITEMS,
+   DEVOPS_ITEMS,
    FRONETND_ITEMS,
 } from "@/utils/constant";
 import { Stack, Typography, styled } from "@mui/material";
@@ -17,7 +18,8 @@ const CustomTypography = styled(Typography, {
    alignItems: "center",
    padding: "8px",
    margin: "5px",
-   fontSize: "12px",
+   fontSize: "11px",
+   fontWeight: 500,
    borderRadius: "5px",
    color: "gray",
 }));
@@ -37,7 +39,7 @@ const CustomStack = styled(Stack, { name: "Stack", slot: "root" })(
          height: "50%",
       },
       [theme.breakpoints.up("md")]: {
-         width: "16%",
+         width: "14%",
          height: "94%",
       },
    })
@@ -55,6 +57,7 @@ const WhatIKnow = () => {
                display: "flex",
                flexWrap: "wrap",
                alignItems: "center",
+               marginLeft: "20px",
             }}
          >
             <CustomStack>
@@ -64,6 +67,7 @@ const WhatIKnow = () => {
                      return (
                         <CustomTypography
                            style={{ border: `1px solid ${item.color} ` }}
+                           key={item.name + item.color}
                         >
                            {item.name}
                         </CustomTypography>
@@ -78,6 +82,7 @@ const WhatIKnow = () => {
                      return (
                         <CustomTypography
                            style={{ border: `1px solid ${item.color} ` }}
+                           key={item.name + item.color}
                         >
                            {item.name}
                         </CustomTypography>
@@ -92,6 +97,7 @@ const WhatIKnow = () => {
                      return (
                         <CustomTypography
                            style={{ border: `1px solid ${item.color} ` }}
+                           key={item.name + item.color}
                         >
                            {item.name}
                         </CustomTypography>
@@ -100,12 +106,13 @@ const WhatIKnow = () => {
                </Stack>
             </CustomStack>
             <CustomStack>
-               <Typography>Backend</Typography>
+               <Typography>DevOps</Typography>
                <Stack sx={{ display: "inline-block", marginTop: "20px" }}>
-                  {BACKEND_ITEMS.map((item, index) => {
+                  {DEVOPS_ITEMS.map((item, index) => {
                      return (
                         <CustomTypography
                            style={{ border: `1px solid ${item.color} ` }}
+                           key={item.name + item.color}
                         >
                            {item.name}
                         </CustomTypography>
@@ -121,7 +128,7 @@ const WhatIKnow = () => {
                   gap: 2,
                   margin: "10px",
                   width: { xs: "90%", sm: "45%", md: "24%" },
-                  height: { xs: "100%", sm: "" },
+                  height: { xs: "100%", sm: "100%" },
                }}
             ></Stack>
          </Stack>

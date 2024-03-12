@@ -26,3 +26,9 @@ export const DATABASE_ITEMS = [
    { name: "Redis", color: "green" },
    { name: "Dynamo DB", color: "#EFCC00" },
 ];
+
+export const DEVOPS_ITEMS = [
+   { name: "Docker", color: "skyblue" },
+   { name: "Github", color: "black" },
+   { name: "CI/CD", color: "black" },
+];
