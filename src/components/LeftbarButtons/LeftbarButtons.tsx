@@ -12,20 +12,13 @@ import {
    faStackOverflow,
    faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import { LEFTBAR_ITEMS, LEFTBAR_SOCIAL_ITEMS } from "@/utils/constant";
+import Link from "next/link";
 
 const LeftbarButtons = () => {
-   const items = ["Home", "Trending", "Snippets", "Videos"];
-   const itemSocial = [
-      "Github",
-      "Instagram",
-      "StackOverflow",
-      "Youtube",
-      "Facebook",
-   ];
-
    return (
       <Stack>
-         {items.map((item, index) => {
+         {LEFTBAR_ITEMS.map((item, index) => {
             return (
                <Stack
                   sx={{
@@ -38,7 +31,7 @@ const LeftbarButtons = () => {
                      padding: "10px",
                      paddingTop: "10px",
                   }}
-                  key={item + " " + index}
+                  key={item.name + " " + index}
                >
                   <Box
                      sx={{
@@ -51,25 +44,36 @@ const LeftbarButtons = () => {
                         width: "90%",
                      }}
                   >
-                     {item === "Home" ? (
-                        <HomeOutlinedIcon sx={{ color: "gray" }} />
-                     ) : item === "Trending" ? (
-                        <WhatshotRoundedIcon sx={{ color: "gray" }} />
-                     ) : item === "Snippets" ? (
-                        <CodeRoundedIcon sx={{ color: "gray" }} />
-                     ) : item === "Videos" ? (
-                        <VideocamIcon sx={{ color: "gray" }} />
-                     ) : null}
-
-                     <Typography
-                        sx={{
-                           color: "gray",
-                           fontSize: "14px",
-                           marginLeft: "10px ",
+                     <Link
+                        href={item.link}
+                        style={{
+                           display: "flex",
+                           flexDirection: "row",
+                           justifyContent: "center",
+                           alignItems: "center",
+                           textDecoration: "none",
                         }}
                      >
-                        {item}
-                     </Typography>
+                        {item.name === "Home" ? (
+                           <HomeOutlinedIcon sx={{ color: "gray" }} />
+                        ) : item.name === "Trending" ? (
+                           <WhatshotRoundedIcon sx={{ color: "gray" }} />
+                        ) : item.name === "Snippets" ? (
+                           <CodeRoundedIcon sx={{ color: "gray" }} />
+                        ) : item.name === "Videos" ? (
+                           <VideocamIcon sx={{ color: "gray" }} />
+                        ) : null}
+
+                        <Typography
+                           sx={{
+                              color: "gray",
+                              fontSize: "14px",
+                              marginLeft: "10px ",
+                           }}
+                        >
+                           {item.name}
+                        </Typography>
+                     </Link>
                   </Box>
                </Stack>
             );
@@ -78,7 +82,7 @@ const LeftbarButtons = () => {
             Socials
          </Typography>
 
-         {itemSocial.map((item, index) => {
+         {LEFTBAR_SOCIAL_ITEMS.map((item, index) => {
             return (
                <Stack
                   sx={{
@@ -103,51 +107,62 @@ const LeftbarButtons = () => {
                         width: "90%",
                      }}
                   >
-                     {item === "Github" ? (
-                        <FontAwesomeIcon
-                           icon={faGithub}
-                           width={25}
-                           height={25}
-                        />
-                     ) : item === "Instagram" ? (
-                        <FontAwesomeIcon
-                           icon={faInstagram}
-                           width={25}
-                           height={25}
-                           color='#d62976'
-                        />
-                     ) : item === "StackOverflow" ? (
-                        <FontAwesomeIcon
-                           icon={faStackOverflow}
-                           width={25}
-                           height={25}
-                           color='#F47F24'
-                        />
-                     ) : item === "Youtube" ? (
-                        <FontAwesomeIcon
-                           icon={faYoutube}
-                           width={25}
-                           height={25}
-                           color='rgb(255,61,61)'
-                        />
-                     ) : item === "Facebook" ? (
-                        <FontAwesomeIcon
-                           icon={faFacebook}
-                           width={25}
-                           height={25}
-                           color='#316FF6'
-                        />
-                     ) : null}
-
-                     <Typography
-                        sx={{
-                           color: "gray",
-                           fontSize: "14px",
-                           marginLeft: "10px ",
+                     <Link
+                        href={item.link}
+                        style={{
+                           display: "flex",
+                           flexDirection: "row",
+                           justifyContent: "center",
+                           alignItems: "center",
+                           textDecoration: "none",
                         }}
                      >
-                        {item}
-                     </Typography>
+                        {item.name === "Github" ? (
+                           <FontAwesomeIcon
+                              icon={faGithub}
+                              width={25}
+                              height={25}
+                           />
+                        ) : item.name === "Instagram" ? (
+                           <FontAwesomeIcon
+                              icon={faInstagram}
+                              width={25}
+                              height={25}
+                              color='#d62976'
+                           />
+                        ) : item.name === "StackOverflow" ? (
+                           <FontAwesomeIcon
+                              icon={faStackOverflow}
+                              width={25}
+                              height={25}
+                              color='#F47F24'
+                           />
+                        ) : item.name === "Youtube" ? (
+                           <FontAwesomeIcon
+                              icon={faYoutube}
+                              width={25}
+                              height={25}
+                              color='rgb(255,61,61)'
+                           />
+                        ) : item.name === "Facebook" ? (
+                           <FontAwesomeIcon
+                              icon={faFacebook}
+                              width={25}
+                              height={25}
+                              color='#316FF6'
+                           />
+                        ) : null}
+
+                        <Typography
+                           sx={{
+                              color: "gray",
+                              fontSize: "14px",
+                              marginLeft: "10px ",
+                           }}
+                        >
+                           {item.name}
+                        </Typography>
+                     </Link>
                   </Box>
                </Stack>
             );

@@ -32,3 +32,24 @@ export const DEVOPS_ITEMS = [
    { name: "Github", color: "black" },
    { name: "CI/CD", color: "black" },
 ];
+
+export const LEFTBAR_ITEMS = [
+   { name: "Home", link: "" },
+   { name: "Trending", link: "" },
+   { name: "Snippets", link: "" },
+   {
+      name: "Videos",
+      link: "https://www.youtube.com/channel/UCcRkgJtzxxxg96zjJqnEJBw",
+   },
+];
+
+export const LEFTBAR_SOCIAL_ITEMS = [
+   { name: "Github", link: "" },
+   { name: "Instagram", link: "" },
+   { name: "StackOverflow", link: "" },
+   {
+      name: "Youtube",
+      link: "https://www.youtube.com/channel/UCcRkgJtzxxxg96zjJqnEJBw",
+   },
+   { name: "Facebook", link: "" },
+];
