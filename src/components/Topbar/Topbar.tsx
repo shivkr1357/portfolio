@@ -9,6 +9,7 @@ import {
   styled,
   Typography,
 } from "@mui/material";
+import Link from "next/link";
 
 const CustomButton = styled("button")({
   color: "white",
@@ -42,12 +43,28 @@ const Topbar = () => {
                 justifyContent: "center",
                 alignItems: "center",
               }}
+              gap={2}
             >
-              <Tooltip title="Contact Me">
-                <CustomButton sx={{ backgroundColor: "green", color: "white" }}>
-                  Contact Me
-                </CustomButton>
-              </Tooltip>
+              <Link href={"https://wa.me/+917903665379"}>
+                <Tooltip title="Contact Me">
+                  <CustomButton
+                    sx={{ backgroundColor: "green", color: "white" }}
+                  >
+                    Contact Me
+                  </CustomButton>
+                </Tooltip>
+              </Link>
+              <Link
+                href={"https://www.upwork.com/freelancers/~016baf39b538bd48cd"}
+              >
+                <Tooltip title="Contact Me" sx={{ marginLeft: 2 }}>
+                  <CustomButton
+                    sx={{ backgroundColor: "green", color: "white" }}
+                  >
+                    Hire Me on Upwork
+                  </CustomButton>
+                </Tooltip>
+              </Link>
             </Box>
           </Box>
         </Toolbar>

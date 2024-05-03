@@ -13,10 +13,12 @@ export const FRONETND_ITEMS = [
 export const BACKEND_ITEMS = [
   { name: "NodeJs", color: "#EFCC00" },
   { name: "ExpressJs", color: "#EFCC00" },
+  { name: "Laravel", color: "green" },
   { name: "SocketIO", color: "green" },
-  { name: "Typescript", color: "green" },
+  // { name: "Typescript", color: "green" },
   { name: "Next Auth", color: "#EFCC00" },
   { name: "Swagger Docs", color: "blue" },
+  { name: "API Production", color: "blue" },
 ];
 
 export const DATABASE_ITEMS = [

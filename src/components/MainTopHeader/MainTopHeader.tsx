@@ -30,11 +30,15 @@ const MainTopHeader = () => {
         gap={5}
       >
         <Image
-          src={"/background-header.jpg"}
+          src={"/profile.jpg"}
           alt="Personal pic"
           width={100}
           height={100}
-          style={{ borderRadius: "50%", border: "2px solid white" }}
+          style={{
+            borderRadius: "50%",
+            border: "2px solid white",
+            objectFit: "contain",
+          }}
         />
         <Stack>
           <Typography>Shiv Shankar Prasad</Typography>
