@@ -15,7 +15,6 @@ export const BACKEND_ITEMS = [
   { name: "ExpressJs", color: "#EFCC00" },
   { name: "Laravel", color: "green" },
   { name: "SocketIO", color: "green" },
-  // { name: "Typescript", color: "green" },
   { name: "Next Auth", color: "#EFCC00" },
   { name: "Swagger Docs", color: "blue" },
   { name: "API Production", color: "blue" },
@@ -36,9 +35,9 @@ export const DEVOPS_ITEMS = [
 ];
 
 export const LEFTBAR_ITEMS = [
-  { name: "Home", link: "" },
-  { name: "Trending", link: "" },
-  { name: "Snippets", link: "" },
+  { name: "Home", link: "/" },
+  { name: "Trending", link: "/trending" },
+  { name: "Snippets", link: "/snippets" },
   {
     name: "Videos",
     link: "https://www.youtube.com/channel/UCcRkgJtzxxxg96zjJqnEJBw",

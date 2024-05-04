@@ -59,7 +59,11 @@ const Topbar = () => {
               >
                 <Tooltip title="Contact Me" sx={{ marginLeft: 2 }}>
                   <CustomButton
-                    sx={{ backgroundColor: "green", color: "white" }}
+                    sx={{
+                      backgroundColor: "green",
+                      color: "white",
+                      height: { xs: "90%", sm: "90% ", md: "100%" },
+                    }}
                   >
                     Hire Me on Upwork
                   </CustomButton>

@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+.whatIknow {
+  background-color: rgb(27, 26, 33);
+  height: 60%;
+  margin-left: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  gap: 2;
+  margin: 10px;
+}
