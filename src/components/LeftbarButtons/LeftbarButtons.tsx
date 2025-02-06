@@ -1,3 +1,4 @@
+"use client";
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -14,159 +15,95 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { LEFTBAR_ITEMS, LEFTBAR_SOCIAL_ITEMS } from "@/utils/constant";
 import Link from "next/link";
+import { styled } from "@mui/material/styles";
+
+const MenuButton = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: '10px 16px',
+  borderRadius: '8px',
+  transition: 'all 0.2s ease',
+  cursor: 'pointer',
+  '&:hover': {
+    backgroundColor: 'rgba(144, 202, 249, 0.08)',
+    transform: 'translateX(4px)',
+  }
+}));
+
+const MenuIcon = styled(Box)(({ theme }) => ({
+  color: '#90caf9',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: 24,
+  height: 24,
+}));
+
+const MenuText = styled(Typography)({
+  fontSize: '14px',
+  fontWeight: 500,
+  color: '#fff',
+  marginLeft: '12px',
+});
+
+const SectionTitle = styled(Typography)({
+  color: '#666',
+  fontSize: '12px',
+  fontWeight: 600,
+  textTransform: 'uppercase',
+  padding: '16px 16px 8px',
+  letterSpacing: '0.5px',
+});
 
 const LeftbarButtons = () => {
    return (
-      <Stack>
-         {LEFTBAR_ITEMS.map((item, index) => {
-            return (
-               <Stack
-                  sx={{
-                     display: "flex",
-                     justifyContent: "center",
-                     alignItems: "center",
-                     flexDirection: "column",
-                     width: "100%",
-                     height: "100%",
-                     padding: "10px",
-                     paddingTop: "10px",
-                  }}
-                  key={item.name + " " + index}
-               >
-                  <Box
-                     sx={{
-                        display: "flex",
-                        justifyContent: "flex-start",
-                        alignItems: "center",
-                        alignContent: "start",
-                        flexDirection: "row",
-                        padding: "5px",
-                        width: "90%",
-                     }}
-                  >
-                     <Link
-                        href={item.link}
-                        style={{
-                           display: "flex",
-                           flexDirection: "row",
-                           justifyContent: "center",
-                           alignItems: "center",
-                           textDecoration: "none",
-                        }}
-                     >
-                        {item.name === "Home" ? (
-                           <HomeOutlinedIcon sx={{ color: "gray" }} />
-                        ) : item.name === "Trending" ? (
-                           <WhatshotRoundedIcon sx={{ color: "gray" }} />
-                        ) : item.name === "Snippets" ? (
-                           <CodeRoundedIcon sx={{ color: "gray" }} />
-                        ) : item.name === "Videos" ? (
-                           <VideocamIcon sx={{ color: "gray" }} />
-                        ) : null}
+      <Stack spacing={1}>
+         {LEFTBAR_ITEMS.map((item, index) => (
+           <Link href={item.link} key={item.name} style={{ textDecoration: 'none' }}>
+             <MenuButton>
+               <MenuIcon>
+                 {item.name === "Home" ? (
+                   <HomeOutlinedIcon />
+                 ) : item.name === "Trending" ? (
+                   <WhatshotRoundedIcon />
+                 ) : item.name === "Snippets" ? (
+                   <CodeRoundedIcon />
+                 ) : item.name === "Videos" ? (
+                   <VideocamIcon />
+                 ) : null}
+               </MenuIcon>
+               <MenuText>{item.name}</MenuText>
+             </MenuButton>
+           </Link>
+         ))}
 
-                        <Typography
-                           sx={{
-                              color: "gray",
-                              fontSize: "14px",
-                              marginLeft: "10px ",
-                           }}
-                        >
-                           {item.name}
-                        </Typography>
-                     </Link>
-                  </Box>
-               </Stack>
-            );
-         })}
-         <Typography sx={{ marginLeft: "20px", color: "dimgray" }}>
-            Socials
-         </Typography>
+         <SectionTitle>Socials</SectionTitle>
 
-         {LEFTBAR_SOCIAL_ITEMS.map((item, index) => {
-            return (
-               <Stack
-                  sx={{
-                     display: "flex",
-                     justifyContent: "center",
-                     alignItems: "center",
-                     flexDirection: "column",
-                     width: "100%",
-                     height: "100%",
-                     padding: "8px",
-                  }}
-                  key={item + " " + index}
-               >
-                  <Box
-                     sx={{
-                        display: "flex",
-                        justifyContent: "flex-start",
-                        alignItems: "center",
-                        alignContent: "start",
-                        flexDirection: "row",
-                        padding: "5px 10px",
-                        width: "90%",
-                     }}
-                  >
-                     <Link
-                        href={item.link}
-                        style={{
-                           display: "flex",
-                           flexDirection: "row",
-                           justifyContent: "center",
-                           alignItems: "center",
-                           textDecoration: "none",
-                        }}
-                     >
-                        {item.name === "Github" ? (
-                           <FontAwesomeIcon
-                              icon={faGithub}
-                              width={25}
-                              height={25}
-                           />
-                        ) : item.name === "Instagram" ? (
-                           <FontAwesomeIcon
-                              icon={faInstagram}
-                              width={25}
-                              height={25}
-                              color='#d62976'
-                           />
-                        ) : item.name === "StackOverflow" ? (
-                           <FontAwesomeIcon
-                              icon={faStackOverflow}
-                              width={25}
-                              height={25}
-                              color='#F47F24'
-                           />
-                        ) : item.name === "Youtube" ? (
-                           <FontAwesomeIcon
-                              icon={faYoutube}
-                              width={25}
-                              height={25}
-                              color='rgb(255,61,61)'
-                           />
-                        ) : item.name === "Facebook" ? (
-                           <FontAwesomeIcon
-                              icon={faFacebook}
-                              width={25}
-                              height={25}
-                              color='#316FF6'
-                           />
-                        ) : null}
-
-                        <Typography
-                           sx={{
-                              color: "gray",
-                              fontSize: "14px",
-                              marginLeft: "10px ",
-                           }}
-                        >
-                           {item.name}
-                        </Typography>
-                     </Link>
-                  </Box>
-               </Stack>
-            );
-         })}
+         {LEFTBAR_SOCIAL_ITEMS.map((item, index) => (
+           <Link href={item.link} key={item.name} style={{ textDecoration: 'none' }}>
+             <MenuButton>
+               <MenuIcon>
+                 <FontAwesomeIcon 
+                   icon={
+                     item.name === "Github" ? faGithub :
+                     item.name === "Instagram" ? faInstagram :
+                     item.name === "StackOverflow" ? faStackOverflow :
+                     item.name === "Youtube" ? faYoutube :
+                     faFacebook
+                   }
+                   color={
+                     item.name === "Github" ? '#fff' :
+                     item.name === "Instagram" ? '#d62976' :
+                     item.name === "StackOverflow" ? '#F47F24' :
+                     item.name === "Youtube" ? '#ff3d3d' :
+                     '#316FF6'
+                   }
+                 />
+               </MenuIcon>
+               <MenuText>{item.name}</MenuText>
+             </MenuButton>
+           </Link>
+         ))}
       </Stack>
    );
 };

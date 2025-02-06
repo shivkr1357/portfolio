@@ -6,12 +6,20 @@ import { Fragment } from "react";
 export default function Home() {
   return (
     <Fragment>
-      <Typography marginTop={5} marginLeft={2}>
-        Projects
+      <Typography 
+        variant="h4" 
+        marginTop={8} 
+        marginBottom={4} 
+        textAlign="center"
+        fontWeight="bold"
+        color="primary"
+      >
+        Featured Projects
       </Typography>
       <Stack
-        gap={3}
-        marginTop={2}
+        gap={4}
+        marginX={4}
+        marginBottom={8}
         direction={"row"}
         sx={{
           display: "flex",
@@ -21,32 +29,35 @@ export default function Home() {
         }}
       >
         <CustomCard
-          title={"Quora Clone"}
+          title={"Quora Community Platform"}
           description={
-            "Made Quora clone using React js, MUI and bacend on Nodejs ,Express js"
+            "A full-stack Q&A platform built with React.js and Material-UI for the frontend, powered by Node.js and Express.js backend. Features include user authentication, real-time updates, and responsive design."
           }
         />
         <CustomCard
-          title={"Tutorials WebApp"}
-          description={"Made Web app using Next js, MUI and  hosted on Vercel"}
-        />
-        <CustomCard
-          title={"Ecommerce WebApp"}
+          title={"Interactive Learning Platform"}
           description={
-            "Made Quora clone using React js, MUI and bacend on Nodejs ,Express js"
+            "Modern educational web application developed using Next.js and Material-UI. Features server-side rendering, optimized performance, and seamless user experience. Deployed and hosted on Vercel."
           }
         />
         <CustomCard
-          title={"Social Mobile App"}
+          title={"E-commerce Solution"}
           description={
-            "Made Quora clone using React js, MUI and bacend on Nodejs ,Express js"
+            "Feature-rich e-commerce platform with secure payment integration, product management, and order tracking. Built using React.js, Material-UI, with Node.js and Express.js backend."
+          }
+        />
+        <CustomCard
+          title={"Social Networking Mobile App"}
+          description={
+            "Cross-platform mobile application enabling social connections, content sharing, and real-time messaging. Developed using React Native with a robust Node.js backend."
           }
         />
       </Stack>
       <Stack
-        marginTop={2}
+        marginX={4}
+        marginBottom={8}
         direction={"row"}
-        sx={{ display: "flex", flexWrap: "wrap", width: "100%" }}
+        sx={{ display: "flex", flexWrap: "wrap", width: "100%", justifyContent: "center" }}
       >
         <WhatIKnow />
       </Stack>

@@ -11,62 +11,90 @@ const MainTopHeader = () => {
     <Stack
       direction={"row"}
       sx={{
-        height: "150px",
+        height: "200px",
         width: { xs: "100%", sm: "100%", md: "98%" },
         marginTop: "10px",
-        backgroundImage: 'url("/background-blurred1.jpg")',
+        background: "linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('/hero-bg.jpg')",
         backgroundSize: "cover",
-        backdropFilter: "blur(5px)",
+        backgroundPosition: "center",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        borderRadius: "10px",
+        borderRadius: "15px",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
       }}
     >
       <Stack
         direction={"row"}
-        sx={{ marginLeft: "30px" }}
+        sx={{ marginLeft: "40px" }}
         alignItems={"center"}
         gap={5}
       >
-        <Image
-          src={"/profile.jpg"}
-          alt="Personal pic"
-          width={100}
-          height={100}
-          style={{
-            borderRadius: "50%",
-            border: "2px solid white",
-            objectFit: "contain",
+        <Box
+          sx={{
+            position: 'relative',
+            width: 120,
+            height: 120,
+            borderRadius: '50%',
+            border: '3px solid #2196f3',
+            padding: '3px',
+            background: '#fff',
           }}
-        />
-        <Stack>
-          <Typography>Shiv Shankar Prasad</Typography>
+        >
+          <Image
+            src={"/professional-headshot.jpg"}
+            alt="Shiv Shankar Prasad - Full Stack Developer"
+            fill
+            style={{
+              borderRadius: "50%",
+              objectFit: "cover",
+            }}
+          />
+        </Box>
+        <Stack spacing={1}>
+          <Typography variant="h4" sx={{ 
+            color: '#fff',
+            fontWeight: 600,
+            textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+          }}>
+            Shiv Shankar Prasad
+          </Typography>
+          <Typography variant="h6" sx={{ 
+            color: '#90caf9',
+            fontWeight: 500 
+          }}>
+            Full Stack Developer
+          </Typography>
           <Link
             href={"https://www.instagram.com/shivshankarkumar246/"}
-            style={{ color: "#d62976" }}
+            style={{ 
+              color: "#90caf9",
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}
           >
+            <FontAwesomeIcon icon={faInstagram} />
             @shivshankarkumar246
           </Link>
         </Stack>
       </Stack>
-      <Stack sx={{ marginRight: "30px" }}>
+      <Stack sx={{ marginRight: "40px" }} spacing={2}>
         <Button
-          startIcon={
-            <FontAwesomeIcon
-              color="#d62976"
-              width={20}
-              height={20}
-              icon={faInstagram}
-            />
-          }
+          startIcon={<FontAwesomeIcon icon={faInstagram} />}
           sx={{
-            backgroundColor: pink["200"],
+            backgroundColor: '#d62976',
+            color: 'white',
+            padding: '12px 24px',
+            '&:hover': {
+              backgroundColor: '#c21858',
+            },
             display: { xs: "none", sm: "none", md: "flex" },
           }}
           variant="contained"
         >
-          Follow me on Instagram
+          Follow on Instagram
         </Button>
       </Stack>
     </Stack>
