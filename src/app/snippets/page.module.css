@@ -13,3 +13,126 @@
   gap: 2;
   margin: 10px;
 }
+
+/* Snippets page animations and enhancements */
+.snippetCard {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.snippetCard:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.snippetCard:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.snippetCard:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.snippetCard:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.snippetCard:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.snippetCard:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.searchField {
+  transition: all 0.3s ease;
+}
+
+.searchField:focus-within {
+  transform: scale(1.02);
+}
+
+.categoryChip {
+  transition: all 0.2s ease;
+}
+
+.categoryChip:hover {
+  transform: translateY(-2px);
+}
+
+.codePreview {
+  position: relative;
+  overflow: hidden;
+}
+
+.codePreview::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(transparent, rgb(20, 19, 25));
+  pointer-events: none;
+}
+
+/* Gradient text animation */
+.gradientText {
+  background: linear-gradient(45deg, #efcc00, #ffd700, #efcc00);
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hover effects for action buttons */
+.actionButton {
+  transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 768px) {
+  .snippetCard {
+    animation-delay: 0.1s !important;
+  }
+}
+
+/* Loading state */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Empty state animation */
+.emptyState {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}

@@ -1,15 +1,114 @@
 .main {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 6rem; */
+  min-height: 100vh;
 }
-.whatIknow {
-   background-color: rgb(27, 26, 33);
-   height: 60%;
-   margin-left: 30px;
-   padding: 20px;
-   border-radius: 10px;
-   gap: 2;
-   margin: 10px;
+
+/* Gradient text animation */
+.gradientText {
+  background: linear-gradient(45deg, #efcc00, #ffd700, #efcc00);
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Project card animations */
+.projectCard {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.projectCard:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.projectCard:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.projectCard:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.projectCard:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero section animations */
+.heroSection {
+  animation: slideInFromLeft 0.8s ease-out;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Skill chip animations */
+.skillChip {
+  transition: all 0.3s ease;
+}
+
+.skillChip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Button hover effects */
+.actionButton {
+  transition: all 0.3s ease;
+}
+
+.actionButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projectCard {
+    animation-delay: 0.1s !important;
+  }
+
+  .heroSection {
+    animation: slideInFromTop 0.8s ease-out;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

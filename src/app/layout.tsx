@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
 import Topbar from "@/components/Topbar/Topbar";
 import { Stack } from "@mui/material";
@@ -7,7 +7,7 @@ import Leftbar from "@/components/Leftbar/Leftbar";
 import MainTopHeader from "@/components/MainTopHeader/MainTopHeader";
 import styles from "./page.module.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Raleway({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Portfolio | Shiv Shankar Prasad",
@@ -30,10 +30,11 @@ export default function RootLayout({
             <Stack
               direction={"column"}
               sx={{
-                width: { xs: "98%", sm: "100%", md: "90%" },
+                width: { xs: "98%", sm: "100%", md: "82%" },
                 marginLeft: { xs: "0px", sm: "0px", md: "18%" },
                 display: "flex",
-                justifyContent: "flex-end",
+                justifyContent: "flex-start",
+                alignItems: "flex-start",
               }}
             >
               <MainTopHeader />
