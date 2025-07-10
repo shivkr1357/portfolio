@@ -183,14 +183,7 @@ const MainTopHeader = () => {
         }}
       >
         <Button
-          startIcon={
-            <FontAwesomeIcon
-              color="#d62976"
-              width={20}
-              height={20}
-              icon={faInstagram}
-            />
-          }
+          startIcon={<FontAwesomeIcon icon={faInstagram} />}
           sx={{
             backgroundColor: "rgba(214, 41, 118, 0.9)",
             color: "white",
