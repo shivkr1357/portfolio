@@ -41,7 +41,7 @@
 }
 
 .gradientText {
-  background: linear-gradient(45deg, #efcc00, #ffd700, #efcc00);
+  background: linear-gradient(45deg, #3b82f6, #60a5fa, #3b82f6);
   background-size: 200% 200%;
   animation: gradientShift 3s ease infinite;
 }

@@ -3,19 +3,19 @@ export const FRONETND_ITEMS = [
   { name: "CSS", color: "black" },
   { name: "Javascript", color: "green" },
   { name: "Typescript", color: "green" },
-  { name: "ReactJs", color: "#EFCC00" },
-  { name: "NextJs", color: "#EFCC00" },
-  { name: "React Native", color: "#EFCC00" },
+  { name: "ReactJs", color: "#3B82F6" },
+  { name: "NextJs", color: "#3B82F6" },
+  { name: "React Native", color: "#3B82F6" },
   //  { name: "Bootstrap", color: "gray" },
   { name: "MUI", color: "blue" },
 ];
 
 export const BACKEND_ITEMS = [
-  { name: "NodeJs", color: "#EFCC00" },
-  { name: "ExpressJs", color: "#EFCC00" },
+  { name: "NodeJs", color: "#3B82F6" },
+  { name: "ExpressJs", color: "#3B82F6" },
   { name: "Laravel", color: "green" },
   { name: "SocketIO", color: "green" },
-  { name: "Next Auth", color: "#EFCC00" },
+  { name: "Next Auth", color: "#3B82F6" },
   { name: "Swagger Docs", color: "blue" },
   { name: "API Production", color: "blue" },
 ];
@@ -25,7 +25,7 @@ export const DATABASE_ITEMS = [
   { name: "MongoDB", color: "black" },
   { name: "Postgres", color: "green" },
   { name: "Redis", color: "green" },
-  { name: "Dynamo DB", color: "#EFCC00" },
+  { name: "Dynamo DB", color: "#3B82F6" },
 ];
 
 export const DEVOPS_ITEMS = [
@@ -38,10 +38,6 @@ export const LEFTBAR_ITEMS = [
   { name: "Home", link: "/" },
   { name: "Trending", link: "/trending" },
   { name: "Snippets", link: "/snippets" },
-  {
-    name: "Videos",
-    link: "https://www.youtube.com/channel/UCcRkgJtzxxxg96zjJqnEJBw",
-  },
 ];
 
 export const LEFTBAR_SOCIAL_ITEMS = [

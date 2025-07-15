@@ -29,8 +29,6 @@ const LeftbarButtons = () => {
         return <WhatshotRoundedIcon sx={{ color: "gray", fontSize: "20px" }} />;
       case "Snippets":
         return <CodeRoundedIcon sx={{ color: "gray", fontSize: "20px" }} />;
-      case "Videos":
-        return <VideocamIcon sx={{ color: "gray", fontSize: "20px" }} />;
       default:
         return null;
     }
@@ -116,16 +114,16 @@ const LeftbarButtons = () => {
                   padding: "12px 15px",
                   borderRadius: "12px",
                   backgroundColor: isActive
-                    ? "rgba(239, 204, 0, 0.1)"
+                    ? "rgba(59, 130, 246, 0.1)"
                     : "transparent",
                   border: isActive
-                    ? "1px solid rgba(239, 204, 0, 0.3)"
+                    ? "1px solid rgba(59, 130, 246, 0.3)"
                     : "1px solid transparent",
                   transition: "all 0.3s ease",
                   cursor: "pointer",
                   "&:hover": {
                     backgroundColor: isActive
-                      ? "rgba(239, 204, 0, 0.15)"
+                      ? "rgba(59, 130, 246, 0.15)"
                       : "rgba(255, 255, 255, 0.05)",
                     transform: "translateX(5px)",
                   },
@@ -134,9 +132,9 @@ const LeftbarButtons = () => {
                 <Box
                   sx={{
                     color: isActive
-                      ? "#EFCC00"
+                      ? "#3B82F6"
                       : isHovered
-                      ? "#EFCC00"
+                      ? "#3B82F6"
                       : "gray",
                     transition: "all 0.3s ease",
                   }}
@@ -146,9 +144,9 @@ const LeftbarButtons = () => {
                 <Typography
                   sx={{
                     color: isActive
-                      ? "#EFCC00"
+                      ? "#3B82F6"
                       : isHovered
-                      ? "#EFCC00"
+                      ? "#3B82F6"
                       : "gray",
                     fontSize: "14px",
                     fontWeight: isActive ? 600 : 500,
@@ -163,7 +161,7 @@ const LeftbarButtons = () => {
                     sx={{
                       width: "4px",
                       height: "20px",
-                      backgroundColor: "#EFCC00",
+                      backgroundColor: "#3B82F6",
                       borderRadius: "2px",
                       marginLeft: "auto",
                       animation: "pulse 2s infinite",
@@ -238,7 +236,7 @@ const LeftbarButtons = () => {
                 </Box>
                 <Typography
                   sx={{
-                    color: isHovered ? "#EFCC00" : "gray",
+                    color: isHovered ? "#3B82F6" : "gray",
                     fontSize: "13px",
                     fontWeight: 500,
                     marginLeft: "12px",

@@ -16,18 +16,22 @@ import {
   Launch as LaunchIcon,
   Code as CodeIcon,
 } from "@mui/icons-material";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getThemeStyles } from "@/utils/themeUtils";
 
 const ProjectComponent = ({ item }: any) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { theme } = useTheme();
+  const themeStyles = getThemeStyles(theme);
 
   return (
     <Card
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       sx={{
-        backgroundColor: "rgb(27,26,33)",
+        backgroundColor: themeStyles.card.backgroundColor,
         borderRadius: "15px",
-        border: "1px solid rgba(255,255,255,0.1)",
+        border: `1px solid ${themeStyles.borderColor}`,
         transition: "all 0.3s ease",
         cursor: "pointer",
         height: "100%",
@@ -36,8 +40,8 @@ const ProjectComponent = ({ item }: any) => {
         flexDirection: "column",
         "&:hover": {
           transform: "translateY(-3px)",
-          boxShadow: "0 8px 25px rgba(0,0,0,0.3)",
-          border: "1px solid rgba(255,255,255,0.2)",
+          boxShadow: themeStyles.shadowHover,
+          border: `1px solid ${themeStyles.borderHover}`,
         },
       }}
     >
@@ -55,7 +59,7 @@ const ProjectComponent = ({ item }: any) => {
             <Stack direction="row" alignItems="center" spacing={2}>
               <Box
                 sx={{
-                  backgroundColor: "rgba(239, 204, 0, 0.1)",
+                  backgroundColor: "rgba(59, 130, 246, 0.1)",
                   borderRadius: "10px",
                   padding: 1,
                   display: "flex",
@@ -63,13 +67,13 @@ const ProjectComponent = ({ item }: any) => {
                   justifyContent: "center",
                 }}
               >
-                <CodeIcon sx={{ color: "#EFCC00", fontSize: "20px" }} />
+                <CodeIcon sx={{ color: "#3B82F6", fontSize: "20px" }} />
               </Box>
               <Typography
                 variant="h6"
                 sx={{
                   fontWeight: 600,
-                  color: "white",
+                  color: themeStyles.text.primary,
                   fontSize: "16px",
                   lineHeight: 1.3,
                 }}
@@ -81,10 +85,10 @@ const ProjectComponent = ({ item }: any) => {
             {/* Description */}
             <Typography
               variant="body2"
-              color="gray"
               sx={{
                 lineHeight: 1.5,
                 fontSize: "13px",
+                color: themeStyles.text.secondary,
               }}
             >
               {item.description}
@@ -101,15 +105,15 @@ const ProjectComponent = ({ item }: any) => {
                 label="View Project"
                 size="small"
                 sx={{
-                  backgroundColor: "rgba(239, 204, 0, 0.2)",
-                  color: "#EFCC00",
-                  border: "1px solid rgba(239, 204, 0, 0.3)",
+                  backgroundColor: "rgba(59, 130, 246, 0.2)",
+                  color: "#3B82F6",
+                  border: "1px solid rgba(59, 130, 246, 0.3)",
                   fontSize: "11px",
                   fontWeight: 500,
                   cursor: "pointer",
                   transition: "all 0.3s ease",
                   "&:hover": {
-                    backgroundColor: "rgba(239, 204, 0, 0.3)",
+                    backgroundColor: "rgba(59, 130, 246, 0.3)",
                     transform: "translateY(-1px)",
                   },
                 }}
@@ -118,8 +122,8 @@ const ProjectComponent = ({ item }: any) => {
                 <IconButton
                   size="small"
                   sx={{
-                    color: "gray",
-                    "&:hover": { color: "#EFCC00" },
+                    color: themeStyles.text.secondary,
+                    "&:hover": { color: "#3B82F6" },
                     transition: "all 0.3s ease",
                   }}
                 >
@@ -128,8 +132,8 @@ const ProjectComponent = ({ item }: any) => {
                 <IconButton
                   size="small"
                   sx={{
-                    color: "gray",
-                    "&:hover": { color: "#EFCC00" },
+                    color: themeStyles.text.secondary,
+                    "&:hover": { color: "#3B82F6" },
                     transition: "all 0.3s ease",
                   }}
                 >

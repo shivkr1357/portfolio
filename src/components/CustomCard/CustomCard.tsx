@@ -16,6 +16,8 @@ import {
   Launch as LaunchIcon,
   Code as CodeIcon,
 } from "@mui/icons-material";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getThemeStyles } from "@/utils/themeUtils";
 
 const CustomCard = ({
   title,
@@ -25,6 +27,8 @@ const CustomCard = ({
   githubUrl,
 }: any) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { theme } = useTheme();
+  const themeStyles = getThemeStyles(theme);
 
   // Function to get relevant image based on project title and tech stack
   const getProjectImage = (title: string, techStack: string[]) => {
@@ -107,19 +111,19 @@ const CustomCard = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       sx={{
-        width: { xs: "90%", sm: "45%", md: "20%" },
+        width: { xs: "90%", sm: "45%", md: "23%" },
         marginTop: "20px",
         borderRadius: "20px",
-        backgroundColor: "rgb(27,26,33)",
-        border: "1px solid rgba(255,255,255,0.1)",
+        backgroundColor: themeStyles.card.backgroundColor,
+        border: `1px solid ${themeStyles.borderColor}`,
         transition: "all 0.3s ease",
         cursor: "pointer",
         position: "relative",
         overflow: "hidden",
         "&:hover": {
           transform: "translateY(-8px)",
-          boxShadow: "0 15px 35px rgba(0,0,0,0.4)",
-          border: "1px solid rgba(239,204,0,0.3)",
+          boxShadow: themeStyles.shadowHover,
+          border: `1px solid ${themeStyles.borderHover}`,
         },
         "&::before": {
           content: '""',
@@ -129,7 +133,7 @@ const CustomCard = ({
           width: "100%",
           height: "100%",
           background:
-            "linear-gradient(90deg, transparent, rgba(239,204,0,0.1), transparent)",
+            "linear-gradient(90deg, transparent, rgba(59,130,246,0.1), transparent)",
           transition: "left 0.5s",
           zIndex: 1,
         },
@@ -182,7 +186,7 @@ const CustomCard = ({
                 sx={{
                   fontSize: "18px",
                   fontWeight: 600,
-                  color: "white",
+                  color: themeStyles.text.primary,
                   lineHeight: 1.3,
                   marginBottom: 1,
                 }}
@@ -191,10 +195,10 @@ const CustomCard = ({
               </Typography>
               <Typography
                 variant="body2"
-                color="gray"
                 sx={{
                   lineHeight: 1.6,
                   fontSize: "14px",
+                  color: themeStyles.text.secondary,
                 }}
               >
                 {description}
@@ -272,15 +276,15 @@ const CustomCard = ({
                 label="View Details"
                 size="small"
                 sx={{
-                  backgroundColor: "rgba(239, 204, 0, 0.2)",
-                  color: "#EFCC00",
-                  border: "1px solid rgba(239, 204, 0, 0.3)",
+                  backgroundColor: "rgba(59, 130, 246, 0.2)",
+                  color: "#3B82F6",
+                  border: "1px solid rgba(59, 130, 246, 0.3)",
                   fontSize: "11px",
                   fontWeight: 500,
                   cursor: "pointer",
                   transition: "all 0.3s ease",
                   "&:hover": {
-                    backgroundColor: "rgba(239, 204, 0, 0.3)",
+                    backgroundColor: "rgba(59, 130, 246, 0.3)",
                     transform: "translateY(-1px)",
                   },
                 }}
@@ -291,7 +295,7 @@ const CustomCard = ({
                     size="small"
                     sx={{
                       color: "gray",
-                      "&:hover": { color: "#EFCC00" },
+                      "&:hover": { color: "#3B82F6" },
                       transition: "all 0.3s ease",
                     }}
                     onClick={() => window.open(githubUrl, "_blank")}
@@ -303,7 +307,7 @@ const CustomCard = ({
                   size="small"
                   sx={{
                     color: "gray",
-                    "&:hover": { color: "#EFCC00" },
+                    "&:hover": { color: "#3B82F6" },
                     transition: "all 0.3s ease",
                   }}
                 >

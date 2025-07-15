@@ -1,3 +1,4 @@
+"use client";
 import { Stack, Typography, Box, Chip, Button } from "@mui/material";
 import CustomCard from "@/components/CustomCard/CustomCard";
 import WhatIKnow from "@/components/WhatIKnowCard/WhatIKnow";
@@ -9,12 +10,18 @@ import {
   TrendingUp as TrendingUpIcon,
 } from "@mui/icons-material";
 import styles from "./page.module.css";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getThemeStyles } from "@/utils/themeUtils";
 
 export default function Home() {
+  const { theme } = useTheme();
+  const themeStyles = getThemeStyles(theme);
+
   return (
     <Fragment>
       {/* Hero Section */}
       <Stack
+        direction={"row"}
         spacing={3}
         sx={{
           padding: { xs: 2, md: 4 },
@@ -23,26 +30,10 @@ export default function Home() {
           maxWidth: "100%",
         }}
       >
-        {/* <Typography
-          variant="h2"
-          className={styles.gradientText}
-          sx={{
-            fontWeight: 700,
-            backgroundClip: "text",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            textAlign: { xs: "center", md: "left" },
-            fontSize: { xs: "32px", md: "48px" },
-            lineHeight: 1.2,
-          }}
-        >
-          Building Digital Experiences
-        </Typography> */}
-
         <Typography
           variant="h5"
-          color="gray"
           sx={{
+            color: themeStyles.text.secondary,
             textAlign: { xs: "center", md: "left" },
             fontWeight: 400,
             lineHeight: 1.5,
@@ -58,6 +49,7 @@ export default function Home() {
           spacing={2}
           sx={{
             justifyContent: { xs: "center", md: "flex-start" },
+            alignItems: "center",
             flexWrap: "wrap",
             gap: 1,
             width: "100%",
@@ -65,7 +57,7 @@ export default function Home() {
         >
           <Chip
             icon={<CodeIcon />}
-            label="React & Next.js"
+            label="React, React Native & Next.js"
             sx={{
               backgroundColor: "rgba(97, 218, 251, 0.2)",
               color: "#61DAFB",
@@ -75,7 +67,7 @@ export default function Home() {
           />
           <Chip
             icon={<WorkIcon />}
-            label="Node.js & Express"
+            label="Node.js, NestJs & Express"
             sx={{
               backgroundColor: "rgba(76, 175, 80, 0.2)",
               color: "#4CAF50",
@@ -104,12 +96,12 @@ export default function Home() {
           spacing={2}
           sx={{ marginBottom: 2 }}
         >
-          <TrendingUpIcon sx={{ color: "#EFCC00", fontSize: "32px" }} />
+          <TrendingUpIcon sx={{ color: "#3B82F6", fontSize: "32px" }} />
           <Typography
             variant="h4"
             sx={{
               fontWeight: 600,
-              color: "white",
+              color: themeStyles.text.primary,
             }}
           >
             Featured Projects
@@ -118,8 +110,8 @@ export default function Home() {
 
         <Typography
           variant="body1"
-          color="gray"
           sx={{
+            color: themeStyles.text.secondary,
             marginBottom: 3,
             maxWidth: "600px",
             lineHeight: 1.6,
@@ -136,7 +128,7 @@ export default function Home() {
             display: "flex",
             flexWrap: "wrap",
             width: "100%",
-            justifyContent: "flex-start",
+            justifyContent: "space-between",
           }}
         >
           <CustomCard
@@ -178,6 +170,95 @@ export default function Home() {
         </Stack>
       </Stack>
 
+      {/* Call to Action */}
+      <Stack
+        spacing={3}
+        sx={{
+          padding: { xs: 2, md: 4 },
+          marginTop: 4,
+          textAlign: "center",
+          width: "100%",
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 600,
+            color: themeStyles.text.primary,
+            marginBottom: 1,
+          }}
+        >
+          Ready to Build Something Amazing?
+        </Typography>
+
+        <Typography
+          variant="body1"
+          sx={{
+            color: themeStyles.text.secondary,
+            // maxWidth: "600px",
+            margin: "0 auto",
+            textAlign: "center",
+          }}
+        >
+          Let&apos;s collaborate on your next project. I&apos;m available for
+          freelance work, full-time positions, and exciting opportunities.
+        </Typography>
+
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            justifyContent: "center",
+            flexWrap: "wrap",
+            gap: 2,
+          }}
+        >
+          <Button
+            variant="contained"
+            size="large"
+            sx={{
+              backgroundColor: "#3B82F6",
+              color: "white",
+              borderRadius: "25px",
+              textTransform: "none",
+              fontWeight: 600,
+              padding: "12px 30px",
+              "&:hover": {
+                backgroundColor: "#2563EB",
+                transform: "translateY(-2px)",
+                boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)",
+              },
+            }}
+            href="https://wa.me/+917903665379"
+            target="_blank"
+          >
+            Get In Touch
+          </Button>
+
+          <Button
+            variant="outlined"
+            size="large"
+            sx={{
+              borderColor: themeStyles.borderColor,
+              color: themeStyles.text.primary,
+              borderRadius: "25px",
+              textTransform: "none",
+              fontWeight: 600,
+              padding: "12px 30px",
+              "&:hover": {
+                borderColor: themeStyles.text.primary,
+                color: themeStyles.text.primary,
+                transform: "translateY(-2px)",
+              },
+            }}
+            href="https://github.com/shivkr1357"
+            target="_blank"
+          >
+            View GitHub
+          </Button>
+        </Stack>
+      </Stack>
+
       {/* Skills Section */}
       <Stack spacing={3} sx={{ padding: { xs: 2, md: 4 }, width: "100%" }}>
         <Stack
@@ -186,12 +267,12 @@ export default function Home() {
           spacing={2}
           sx={{ marginBottom: 2 }}
         >
-          <CodeIcon sx={{ color: "#EFCC00", fontSize: "32px" }} />
+          <CodeIcon sx={{ color: "#3B82F6", fontSize: "32px" }} />
           <Typography
             variant="h4"
             sx={{
               fontWeight: 600,
-              color: "white",
+              color: themeStyles.text.primary,
             }}
           >
             Technical Skills
@@ -200,8 +281,8 @@ export default function Home() {
 
         <Typography
           variant="body1"
-          color="gray"
           sx={{
+            color: themeStyles.text.secondary,
             marginBottom: 3,
             maxWidth: "600px",
             lineHeight: 1.6,
@@ -222,95 +303,6 @@ export default function Home() {
           }}
         >
           <WhatIKnow />
-        </Stack>
-      </Stack>
-
-      {/* Call to Action */}
-      <Stack
-        spacing={3}
-        sx={{
-          padding: { xs: 2, md: 4 },
-          marginTop: 4,
-          textAlign: "center",
-          width: "100%",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: 600,
-            color: "white",
-            marginBottom: 1,
-          }}
-        >
-          Ready to Build Something Amazing?
-        </Typography>
-
-        <Typography
-          variant="body1"
-          color="gray"
-          sx={{
-            maxWidth: "500px",
-            margin: "0 auto",
-            lineHeight: 1.6,
-          }}
-        >
-          Let&apos;s collaborate on your next project. I&apos;m available for
-          freelance work, full-time positions, and exciting opportunities.
-        </Typography>
-
-        <Stack
-          direction="row"
-          spacing={2}
-          sx={{
-            justifyContent: "center",
-            flexWrap: "wrap",
-            gap: 2,
-          }}
-        >
-          <Button
-            variant="contained"
-            size="large"
-            sx={{
-              backgroundColor: "#EFCC00",
-              color: "black",
-              borderRadius: "25px",
-              textTransform: "none",
-              fontWeight: 600,
-              padding: "12px 30px",
-              "&:hover": {
-                backgroundColor: "#FFD700",
-                transform: "translateY(-2px)",
-                boxShadow: "0 8px 25px rgba(239, 204, 0, 0.3)",
-              },
-            }}
-            href="https://wa.me/+917903665379"
-            target="_blank"
-          >
-            Get In Touch
-          </Button>
-
-          <Button
-            variant="outlined"
-            size="large"
-            sx={{
-              borderColor: "rgba(255,255,255,0.3)",
-              color: "white",
-              borderRadius: "25px",
-              textTransform: "none",
-              fontWeight: 600,
-              padding: "12px 30px",
-              "&:hover": {
-                borderColor: "#EFCC00",
-                color: "#EFCC00",
-                transform: "translateY(-2px)",
-              },
-            }}
-            href="https://github.com/shivkr1357"
-            target="_blank"
-          >
-            View GitHub
-          </Button>
         </Stack>
       </Stack>
     </Fragment>

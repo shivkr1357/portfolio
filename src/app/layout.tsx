@@ -6,6 +6,7 @@ import { Stack } from "@mui/material";
 import Leftbar from "@/components/Leftbar/Leftbar";
 import MainTopHeader from "@/components/MainTopHeader/MainTopHeader";
 import styles from "./page.module.css";
+import ClientWrapper from "@/components/ClientWrapper";
 
 const inter = Raleway({ subsets: ["latin"] });
 
@@ -23,25 +24,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className={styles.main}>
-          <Topbar />
-          <Stack direction={"row"} marginTop={"80px"}>
-            <Leftbar />
-            <Stack
-              direction={"column"}
-              sx={{
-                width: { xs: "98%", sm: "100%", md: "82%" },
-                marginLeft: { xs: "0px", sm: "0px", md: "18%" },
-                display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
-              }}
-            >
-              <MainTopHeader />
-              {children}
+        <ClientWrapper>
+          <main className={styles.main}>
+            <Topbar />
+            <Stack direction={"row"} marginTop={"80px"}>
+              <Leftbar />
+              <Stack
+                direction={"column"}
+                sx={{
+                  width: { xs: "98%", sm: "100%", md: "82%" },
+                  marginLeft: { xs: "0px", sm: "0px", md: "18%" },
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  alignItems: "flex-start",
+                }}
+              >
+                <MainTopHeader />
+                {children}
+              </Stack>
             </Stack>
-          </Stack>
-        </main>
+          </main>
+        </ClientWrapper>
       </body>
     </html>
   );

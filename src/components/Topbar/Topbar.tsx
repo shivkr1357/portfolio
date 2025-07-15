@@ -20,14 +20,18 @@ import {
   Email as EmailIcon,
   LinkedIn as LinkedInIcon,
   GitHub as GitHubIcon,
+  LightMode as LightModeIcon,
+  DarkMode as DarkModeIcon,
 } from "@mui/icons-material";
 import Link from "next/link";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getThemeStyles } from "@/utils/themeUtils";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: "rgb(28,27,34)",
-  backdropFilter: "blur(10px)",
-  borderBottom: "1px solid rgba(255,255,255,0.1)",
-  boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+  backgroundColor: "rgba(15, 23, 42, 0.95)",
+  backdropFilter: "blur(15px)",
+  borderBottom: "1px solid rgba(59, 130, 246, 0.2)",
+  boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -67,15 +71,17 @@ const ContactButton = styled(StyledButton)({
 });
 
 const HireButton = styled(StyledButton)({
-  backgroundColor: "#EFCC00",
-  color: "black",
+  backgroundColor: "#3B82F6",
+  color: "white",
   "&:hover": {
-    backgroundColor: "#FFD700",
+    backgroundColor: "#2563EB",
   },
 });
 
 const Topbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const themeStyles = getThemeStyles(theme);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,7 +96,10 @@ const Topbar = () => {
     <StyledAppBar
       position="fixed"
       sx={{
-        backgroundColor: scrolled ? "rgba(28,27,34,0.95)" : "rgb(28,27,34)",
+        ...themeStyles.appBar,
+        backgroundColor: scrolled
+          ? themeStyles.appBar.backgroundColor.replace("0.95", "0.98")
+          : themeStyles.appBar.backgroundColor,
         transition: "all 0.3s ease",
       }}
     >
@@ -102,7 +111,7 @@ const Topbar = () => {
               sx={{
                 width: 40,
                 height: 40,
-                background: "linear-gradient(45deg, #EFCC00, #FFD700)",
+                background: "linear-gradient(45deg, #3B82F6, #60A5FA)",
                 fontWeight: "bold",
                 fontSize: "18px",
               }}
@@ -114,7 +123,7 @@ const Topbar = () => {
                 variant="h6"
                 sx={{
                   fontWeight: 700,
-                  background: "linear-gradient(45deg, #EFCC00, #FFD700)",
+                  background: "linear-gradient(45deg, #3B82F6, #60A5FA)",
                   backgroundClip: "text",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -126,7 +135,7 @@ const Topbar = () => {
               <Typography
                 variant="caption"
                 sx={{
-                  color: "gray",
+                  color: themeStyles.text.secondary,
                   fontSize: { xs: "10px", md: "12px" },
                 }}
               >
@@ -167,8 +176,8 @@ const Topbar = () => {
               <Link href="mailto:shivkr1357@gmail.com">
                 <IconButton
                   sx={{
-                    color: "gray",
-                    "&:hover": { color: "#EFCC00" },
+                    color: themeStyles.text.secondary,
+                    "&:hover": { color: themeStyles.text.primary },
                     transition: "all 0.3s ease",
                   }}
                 >
@@ -181,14 +190,30 @@ const Topbar = () => {
               <Link href="https://github.com/shivkr1357" target="_blank">
                 <IconButton
                   sx={{
-                    color: "gray",
-                    "&:hover": { color: "#EFCC00" },
+                    color: themeStyles.text.secondary,
+                    "&:hover": { color: themeStyles.text.primary },
                     transition: "all 0.3s ease",
                   }}
                 >
                   <GitHubIcon />
                 </IconButton>
               </Link>
+            </Tooltip>
+
+            <Tooltip
+              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              arrow
+            >
+              <IconButton
+                onClick={toggleTheme}
+                sx={{
+                  color: themeStyles.text.secondary,
+                  "&:hover": { color: themeStyles.text.primary },
+                  transition: "all 0.3s ease",
+                }}
+              >
+                {theme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+              </IconButton>
             </Tooltip>
           </Stack>
 

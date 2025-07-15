@@ -16,7 +16,9 @@ import {
   IconButton,
 } from "@mui/material";
 import React, { useState } from "react";
-import ProjectComponent from "../ProjectComponent/ProjectComponent";
+import ProjectComponent from "@/components/ProjectComponent/ProjectComponent";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getThemeStyles } from "@/utils/themeUtils";
 import {
   Code as CodeIcon,
   Storage as StorageIcon,
@@ -28,15 +30,17 @@ import {
 
 const SkillCard = ({ title, items, icon, color }: any) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { theme } = useTheme();
+  const themeStyles = getThemeStyles(theme);
 
   return (
     <Card
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       sx={{
-        backgroundColor: "rgb(27,26,33)",
+        backgroundColor: themeStyles.card.backgroundColor,
         borderRadius: "15px",
-        border: "1px solid rgba(255,255,255,0.1)",
+        border: `1px solid ${themeStyles.borderColor}`,
         transition: "all 0.3s ease",
         cursor: "pointer",
         height: "100%",
@@ -45,8 +49,8 @@ const SkillCard = ({ title, items, icon, color }: any) => {
         flexDirection: "column",
         "&:hover": {
           transform: "translateY(-5px)",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-          border: "1px solid rgba(255,255,255,0.2)",
+          boxShadow: themeStyles.shadowHover,
+          border: `1px solid ${themeStyles.borderHover}`,
         },
       }}
     >
@@ -77,7 +81,7 @@ const SkillCard = ({ title, items, icon, color }: any) => {
               variant="h6"
               sx={{
                 fontWeight: 600,
-                color: "white",
+                color: themeStyles.text.primary,
                 fontSize: "18px",
               }}
             >
@@ -102,8 +106,11 @@ const SkillCard = ({ title, items, icon, color }: any) => {
                 label={item.name}
                 size="small"
                 sx={{
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                  color: item.color || "gray",
+                  backgroundColor:
+                    theme === "light"
+                      ? "rgba(0,0,0,0.05)"
+                      : "rgba(255,255,255,0.05)",
+                  color: item.color || themeStyles.text.secondary,
                   border: `1px solid ${item.color}30`,
                   fontSize: "11px",
                   fontWeight: 500,
@@ -123,6 +130,9 @@ const SkillCard = ({ title, items, icon, color }: any) => {
 };
 
 const WhatIKnow = () => {
+  const { theme } = useTheme();
+  const themeStyles = getThemeStyles(theme);
+
   return (
     <Stack spacing={4} sx={{ width: "100%" }}>
       {/* Skills Grid */}
@@ -155,8 +165,8 @@ const WhatIKnow = () => {
         <SkillCard
           title="Database Management"
           items={DATABASE_ITEMS}
-          icon={<CloudIcon sx={{ color: "#FFD700" }} />}
-          color="#FFD700"
+          icon={<CloudIcon sx={{ color: "#3B82F6" }} />}
+          color="#3B82F6"
         />
         <SkillCard
           title="DevOps & Tools"
@@ -172,13 +182,13 @@ const WhatIKnow = () => {
           variant="h5"
           sx={{
             fontWeight: 600,
-            color: "white",
+            color: themeStyles.text.primary,
             display: "flex",
             alignItems: "center",
             gap: 2,
           }}
         >
-          <GitHubIcon sx={{ color: "#EFCC00", fontSize: "28px" }} />
+          <GitHubIcon sx={{ color: "#3B82F6", fontSize: "28px" }} />
           More Projects
         </Typography>
 
@@ -190,7 +200,7 @@ const WhatIKnow = () => {
             gridTemplateColumns: {
               xs: "1fr",
               sm: "repeat(2, 1fr)",
-              lg: "repeat(3, 1fr)",
+              lg: "repeat(4, 1fr)",
             },
             gap: 2,
             width: "100%",

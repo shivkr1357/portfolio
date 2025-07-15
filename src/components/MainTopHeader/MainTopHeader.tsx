@@ -23,7 +23,7 @@ const MainTopHeader = () => {
         width: { xs: "100%", sm: "100%", md: "98%" },
         marginTop: "10px",
         background:
-          "linear-gradient(135deg, rgba(28,27,34,0.9) 0%, rgba(28,27,34,0.8) 100%)",
+          "linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(30,41,59,0.8) 100%)",
         backgroundImage: 'url("/background-blurred1.jpg")',
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -49,7 +49,7 @@ const MainTopHeader = () => {
           right: 0,
           bottom: 0,
           background:
-            "linear-gradient(135deg, rgba(239,204,0,0.1) 0%, rgba(255,215,0,0.05) 100%)",
+            "linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(96,165,250,0.05) 100%)",
           opacity: isHovered ? 1 : 0,
           transition: "opacity 0.3s ease",
         },
@@ -72,12 +72,12 @@ const MainTopHeader = () => {
               border: "3px solid rgba(255,255,255,0.2)",
               boxShadow: "0 8px 25px rgba(0,0,0,0.3)",
               transition: "all 0.3s ease",
-              background: "linear-gradient(45deg, #EFCC00, #FFD700)",
+              background: "linear-gradient(45deg, #3B82F6, #60A5FA)",
               fontWeight: "bold",
               fontSize: "32px",
               "&:hover": {
                 transform: "scale(1.05)",
-                border: "3px solid rgba(239,204,0,0.5)",
+                border: "3px solid rgba(59,130,246,0.5)",
               },
             }}
           >
@@ -106,7 +106,7 @@ const MainTopHeader = () => {
               fontWeight: 700,
               color: "white",
               fontSize: { xs: "24px", md: "28px" },
-              background: "linear-gradient(45deg, #EFCC00, #FFD700)",
+              background: "linear-gradient(45deg, #3B82F6, #60A5FA)",
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",

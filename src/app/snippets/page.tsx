@@ -23,7 +23,7 @@ import styles from "./page.module.css";
 
 // Styled components matching your theme
 const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: "rgb(27,26,33)",
+  backgroundColor: "rgba(30, 41, 59, 0.8)",
   borderRadius: "20px",
   border: "1px solid rgba(255,255,255,0.1)",
   transition: "all 0.3s ease",
@@ -36,19 +36,19 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 const StyledChip = styled(Chip)(({ theme }) => ({
-  backgroundColor: "rgb(20,19,25)",
+  backgroundColor: "rgba(15, 23, 42, 0.8)",
   color: "gray",
   border: "1px solid",
   fontSize: "11px",
   fontWeight: 500,
   "&:hover": {
-    backgroundColor: "rgb(30,29,35)",
+    backgroundColor: "rgba(30, 41, 59, 0.8)",
   },
 }));
 
 const SearchField = styled(TextField)(({ theme }) => ({
   "& .MuiOutlinedInput-root": {
-    backgroundColor: "rgb(27,26,33)",
+    backgroundColor: "rgba(30, 41, 59, 0.8)",
     borderRadius: "15px",
     border: "1px solid rgba(255,255,255,0.1)",
     "& fieldset": {
@@ -58,7 +58,7 @@ const SearchField = styled(TextField)(({ theme }) => ({
       borderColor: "rgba(255,255,255,0.2)",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#EFCC00",
+      borderColor: "#3B82F6",
     },
   },
   "& .MuiInputBase-input": {
@@ -312,11 +312,11 @@ export default function Snippets() {
               className={styles.categoryChip}
               sx={{
                 backgroundColor:
-                  selectedCategory === category ? "#EFCC00" : "transparent",
-                color: selectedCategory === category ? "black" : "gray",
+                  selectedCategory === category ? "#3B82F6" : "transparent",
+                color: selectedCategory === category ? "white" : "gray",
                 borderColor:
                   selectedCategory === category
-                    ? "#EFCC00"
+                    ? "#3B82F6"
                     : "rgba(255,255,255,0.2)",
               }}
             />
@@ -383,7 +383,7 @@ export default function Snippets() {
                 <Box
                   className={styles.codePreview}
                   sx={{
-                    backgroundColor: "rgb(20,19,25)",
+                    backgroundColor: "rgba(15, 23, 42, 0.8)",
                     borderRadius: "10px",
                     padding: 2,
                     border: "1px solid rgba(255,255,255,0.1)",
@@ -395,7 +395,7 @@ export default function Snippets() {
                   <Typography
                     variant="caption"
                     sx={{
-                      color: "#EFCC00",
+                      color: "#3B82F6",
                       fontFamily: "monospace",
                       fontSize: "11px",
                       lineHeight: 1.4,
@@ -431,7 +431,7 @@ export default function Snippets() {
                   <Typography
                     variant="caption"
                     sx={{
-                      color: "#EFCC00",
+                      color: "#3B82F6",
                       fontWeight: 500,
                       textTransform: "uppercase",
                     }}
@@ -442,7 +442,7 @@ export default function Snippets() {
                     <IconButton
                       size="small"
                       className={styles.actionButton}
-                      sx={{ color: "gray", "&:hover": { color: "#EFCC00" } }}
+                      sx={{ color: "gray", "&:hover": { color: "#3B82F6" } }}
                       onClick={() => window.open(snippet.githubUrl, "_blank")}
                     >
                       <GitHubIcon fontSize="small" />
@@ -450,7 +450,7 @@ export default function Snippets() {
                     <IconButton
                       size="small"
                       className={styles.actionButton}
-                      sx={{ color: "gray", "&:hover": { color: "#EFCC00" } }}
+                      sx={{ color: "gray", "&:hover": { color: "#3B82F6" } }}
                       onClick={() => window.open(snippet.demoUrl, "_blank")}
                     >
                       <LaunchIcon fontSize="small" />

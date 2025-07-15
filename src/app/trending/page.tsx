@@ -144,7 +144,7 @@ export default function Trending() {
       case "exploding":
         return <WhatshotIcon sx={{ color: "#FF6B6B" }} />;
       case "hot":
-        return <TrendingUpIcon sx={{ color: "#FFD700" }} />;
+        return <TrendingUpIcon sx={{ color: "#3B82F6" }} />;
       case "rising":
         return <TrendingUpIcon sx={{ color: "#4CAF50" }} />;
       default:
@@ -157,7 +157,7 @@ export default function Trending() {
       case "exploding":
         return "#FF6B6B";
       case "hot":
-        return "#FFD700";
+        return "#3B82F6";
       case "rising":
         return "#4CAF50";
       default:
@@ -197,7 +197,7 @@ export default function Trending() {
       </Stack>
 
       {/* Trending Topics Grid */}
-      <Stack spacing={3}>
+      <Stack marginTop={2}>
         <Typography
           variant="h5"
           sx={{
@@ -212,13 +212,13 @@ export default function Trending() {
           Hot Topics
         </Typography>
 
-        <Grid container spacing={3}>
+        <Grid container spacing={2} marginTop={2}>
           {TRENDING_TOPICS.map((topic) => (
             <Grid item xs={12} sm={6} md={4} key={topic.id}>
               <Card
                 className={styles.trendingCard}
                 sx={{
-                  backgroundColor: "rgb(27,26,33)",
+                  backgroundColor: "rgba(30, 41, 59, 0.8)",
                   borderRadius: "15px",
                   border: "1px solid rgba(255,255,255,0.1)",
                   transition: "all 0.3s ease",
@@ -230,7 +230,7 @@ export default function Trending() {
                   },
                 }}
               >
-                <CardContent sx={{ padding: 3 }}>
+                <CardContent sx={{ padding: 2 }}>
                   <Stack spacing={2}>
                     {/* Header */}
                     <Stack
@@ -338,7 +338,7 @@ export default function Trending() {
       </Stack>
 
       {/* Technology Trends */}
-      <Stack spacing={3}>
+      <Stack spacing={2}>
         <Typography
           variant="h5"
           sx={{
@@ -349,7 +349,7 @@ export default function Trending() {
             gap: 1,
           }}
         >
-          <CodeIcon sx={{ color: "#EFCC00" }} />
+          <CodeIcon sx={{ color: "#3B82F6" }} />
           Technology Trends
         </Typography>
 
@@ -358,7 +358,7 @@ export default function Trending() {
             <Grid item xs={12} sm={6} md={3} key={tech.name}>
               <Card
                 sx={{
-                  backgroundColor: "rgb(27,26,33)",
+                  backgroundColor: "rgba(30, 41, 59, 0.8)",
                   borderRadius: "12px",
                   border: "1px solid rgba(255,255,255,0.1)",
                   transition: "all 0.3s ease",
@@ -440,7 +440,7 @@ export default function Trending() {
             <Card
               key={insight.id}
               sx={{
-                backgroundColor: "rgb(27,26,33)",
+                backgroundColor: "rgba(30, 41, 59, 0.8)",
                 borderRadius: "12px",
                 border: "1px solid rgba(255,255,255,0.1)",
                 transition: "all 0.3s ease",
@@ -493,7 +493,7 @@ export default function Trending() {
                   <IconButton
                     sx={{
                       color: "gray",
-                      "&:hover": { color: "#EFCC00" },
+                      "&:hover": { color: "#3B82F6" },
                     }}
                   >
                     <LaunchIcon />
