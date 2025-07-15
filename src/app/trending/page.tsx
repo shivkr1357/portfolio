@@ -23,6 +23,8 @@ import {
   Whatshot as WhatshotIcon,
 } from "@mui/icons-material";
 import styles from "./page.module.css";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getThemeStyles } from "@/utils/themeUtils";
 
 // Sample trending data
 const TRENDING_TOPICS = [
@@ -138,6 +140,8 @@ const TRENDING_INSIGHTS = [
 
 export default function Trending() {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const { theme } = useTheme();
+  const themeStyles = getThemeStyles(theme);
 
   const getTrendIcon = (trend: string) => {
     switch (trend) {
@@ -188,8 +192,10 @@ export default function Trending() {
         </Typography> */}
         <Typography
           variant="body1"
-          color="gray"
-          sx={{ textAlign: { xs: "center", md: "left" } }}
+          sx={{
+            textAlign: { xs: "center", md: "left" },
+            color: themeStyles.text.secondary,
+          }}
         >
           Stay updated with the latest trends in web development, technologies,
           and industry insights
@@ -202,7 +208,7 @@ export default function Trending() {
           variant="h5"
           sx={{
             fontWeight: 600,
-            color: "white",
+            color: themeStyles.text.primary,
             display: "flex",
             alignItems: "center",
             gap: 1,
@@ -218,15 +224,15 @@ export default function Trending() {
               <Card
                 className={styles.trendingCard}
                 sx={{
-                  backgroundColor: "rgba(30, 41, 59, 0.8)",
+                  backgroundColor: themeStyles.card.backgroundColor,
                   borderRadius: "15px",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  border: `1px solid ${themeStyles.borderColor}`,
                   transition: "all 0.3s ease",
                   cursor: "pointer",
                   "&:hover": {
                     transform: "translateY(-5px)",
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-                    border: "1px solid rgba(255,255,255,0.2)",
+                    boxShadow: themeStyles.shadowHover,
+                    border: `1px solid ${themeStyles.borderHover}`,
                   },
                 }}
               >
@@ -243,7 +249,7 @@ export default function Trending() {
                           variant="h6"
                           sx={{
                             fontWeight: 600,
-                            color: "white",
+                            color: themeStyles.text.primary,
                             marginBottom: 1,
                             lineHeight: 1.3,
                           }}
@@ -252,8 +258,11 @@ export default function Trending() {
                         </Typography>
                         <Typography
                           variant="body2"
-                          color="gray"
-                          sx={{ lineHeight: 1.5, marginBottom: 2 }}
+                          sx={{
+                            lineHeight: 1.5,
+                            marginBottom: 2,
+                            color: themeStyles.text.secondary,
+                          }}
                         >
                           {topic.description}
                         </Typography>
@@ -280,8 +289,11 @@ export default function Trending() {
                         label={topic.category}
                         size="small"
                         sx={{
-                          backgroundColor: "rgba(255,255,255,0.1)",
-                          color: "gray",
+                          backgroundColor:
+                            theme === "light"
+                              ? "rgba(0,0,0,0.1)"
+                              : "rgba(255,255,255,0.1)",
+                          color: themeStyles.text.secondary,
                           fontSize: "11px",
                         }}
                       />
@@ -299,16 +311,30 @@ export default function Trending() {
                     {/* Stats */}
                     <Stack direction="row" spacing={2}>
                       <Stack direction="row" alignItems="center" spacing={0.5}>
-                        <StarIcon sx={{ fontSize: "14px", color: "gray" }} />
-                        <Typography variant="caption" color="gray">
+                        <StarIcon
+                          sx={{
+                            fontSize: "14px",
+                            color: themeStyles.text.secondary,
+                          }}
+                        />
+                        <Typography
+                          variant="caption"
+                          sx={{ color: themeStyles.text.secondary }}
+                        >
                           {topic.stars.toLocaleString()}
                         </Typography>
                       </Stack>
                       <Stack direction="row" alignItems="center" spacing={0.5}>
                         <VisibilityIcon
-                          sx={{ fontSize: "14px", color: "gray" }}
+                          sx={{
+                            fontSize: "14px",
+                            color: themeStyles.text.secondary,
+                          }}
                         />
-                        <Typography variant="caption" color="gray">
+                        <Typography
+                          variant="caption"
+                          sx={{ color: themeStyles.text.secondary }}
+                        >
                           {topic.views.toLocaleString()}
                         </Typography>
                       </Stack>
@@ -322,7 +348,10 @@ export default function Trending() {
                         sx={{
                           height: 4,
                           borderRadius: 2,
-                          backgroundColor: "rgba(255,255,255,0.1)",
+                          backgroundColor:
+                            theme === "light"
+                              ? "rgba(0,0,0,0.1)"
+                              : "rgba(255,255,255,0.1)",
                           "& .MuiLinearProgress-bar": {
                             backgroundColor: getTrendColor(topic.trend),
                           },
@@ -343,7 +372,7 @@ export default function Trending() {
           variant="h5"
           sx={{
             fontWeight: 600,
-            color: "white",
+            color: themeStyles.text.primary,
             display: "flex",
             alignItems: "center",
             gap: 1,
@@ -358,13 +387,13 @@ export default function Trending() {
             <Grid item xs={12} sm={6} md={3} key={tech.name}>
               <Card
                 sx={{
-                  backgroundColor: "rgba(30, 41, 59, 0.8)",
+                  backgroundColor: themeStyles.card.backgroundColor,
                   borderRadius: "12px",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  border: `1px solid ${themeStyles.borderColor}`,
                   transition: "all 0.3s ease",
                   "&:hover": {
                     transform: "translateY(-2px)",
-                    boxShadow: "0 8px 25px rgba(0,0,0,0.3)",
+                    boxShadow: themeStyles.shadowHover,
                   },
                 }}
               >
@@ -379,7 +408,7 @@ export default function Trending() {
                         variant="h6"
                         sx={{
                           fontWeight: 600,
-                          color: "white",
+                          color: themeStyles.text.primary,
                           fontSize: "16px",
                         }}
                       >
@@ -409,7 +438,10 @@ export default function Trending() {
                       sx={{
                         height: 3,
                         borderRadius: 2,
-                        backgroundColor: "rgba(255,255,255,0.1)",
+                        backgroundColor:
+                          theme === "light"
+                            ? "rgba(0,0,0,0.1)"
+                            : "rgba(255,255,255,0.1)",
                         "& .MuiLinearProgress-bar": {
                           backgroundColor: tech.color,
                         },
@@ -429,7 +461,7 @@ export default function Trending() {
           variant="h5"
           sx={{
             fontWeight: 600,
-            color: "white",
+            color: themeStyles.text.primary,
           }}
         >
           Latest Insights
@@ -440,14 +472,14 @@ export default function Trending() {
             <Card
               key={insight.id}
               sx={{
-                backgroundColor: "rgba(30, 41, 59, 0.8)",
+                backgroundColor: themeStyles.card.backgroundColor,
                 borderRadius: "12px",
-                border: "1px solid rgba(255,255,255,0.1)",
+                border: `1px solid ${themeStyles.borderColor}`,
                 transition: "all 0.3s ease",
                 cursor: "pointer",
                 "&:hover": {
                   transform: "translateX(5px)",
-                  border: "1px solid rgba(255,255,255,0.2)",
+                  border: `1px solid ${themeStyles.borderHover}`,
                 },
               }}
             >
@@ -462,7 +494,7 @@ export default function Trending() {
                       variant="h6"
                       sx={{
                         fontWeight: 600,
-                        color: "white",
+                        color: themeStyles.text.primary,
                         marginBottom: 1,
                       }}
                     >
@@ -470,8 +502,11 @@ export default function Trending() {
                     </Typography>
                     <Typography
                       variant="body2"
-                      color="gray"
-                      sx={{ lineHeight: 1.5, marginBottom: 2 }}
+                      sx={{
+                        lineHeight: 1.5,
+                        marginBottom: 2,
+                        color: themeStyles.text.secondary,
+                      }}
                     >
                       {insight.description}
                     </Typography>
@@ -480,19 +515,25 @@ export default function Trending() {
                         label={insight.category}
                         size="small"
                         sx={{
-                          backgroundColor: "rgba(255,255,255,0.1)",
-                          color: "gray",
+                          backgroundColor:
+                            theme === "light"
+                              ? "rgba(0,0,0,0.1)"
+                              : "rgba(255,255,255,0.1)",
+                          color: themeStyles.text.secondary,
                           fontSize: "11px",
                         }}
                       />
-                      <Typography variant="caption" color="gray">
+                      <Typography
+                        variant="caption"
+                        sx={{ color: themeStyles.text.secondary }}
+                      >
                         {insight.readTime}
                       </Typography>
                     </Stack>
                   </Box>
                   <IconButton
                     sx={{
-                      color: "gray",
+                      color: themeStyles.text.secondary,
                       "&:hover": { color: "#3B82F6" },
                     }}
                   >

@@ -20,6 +20,8 @@ import {
   FilterList as FilterIcon,
 } from "@mui/icons-material";
 import styles from "./page.module.css";
+import { useTheme } from "@/contexts/ThemeContext";
+import { getThemeStyles } from "@/utils/themeUtils";
 
 // Styled components matching your theme
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -236,6 +238,8 @@ const CATEGORIES = [
 export default function Snippets() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const { theme } = useTheme();
+  const themeStyles = getThemeStyles(theme);
 
   const filteredSnippets = SNIPPETS_DATA.filter((snippet) => {
     const matchesSearch =
@@ -274,8 +278,10 @@ export default function Snippets() {
         </Typography> */}
         <Typography
           variant="body1"
-          color="gray"
-          sx={{ textAlign: { xs: "center", md: "left" } }}
+          sx={{
+            textAlign: { xs: "center", md: "left" },
+            color: themeStyles.text.secondary,
+          }}
         >
           A collection of useful code snippets, utilities, and reusable
           components
@@ -288,7 +294,7 @@ export default function Snippets() {
         spacing={2}
         alignItems={{ xs: "stretch", md: "center" }}
       >
-        <SearchField
+        <TextField
           placeholder="Search snippets..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -296,15 +302,37 @@ export default function Snippets() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon sx={{ color: themeStyles.text.secondary }} />
               </InputAdornment>
             ),
           }}
-          sx={{ flex: 1 }}
+          sx={{
+            flex: 1,
+            "& .MuiOutlinedInput-root": {
+              backgroundColor:
+                theme === "light"
+                  ? "rgba(248, 250, 252, 0.8)"
+                  : "rgba(30, 41, 59, 0.8)",
+              borderRadius: "15px",
+              border: `1px solid ${themeStyles.borderColor}`,
+              "& fieldset": {
+                borderColor: themeStyles.borderColor,
+              },
+              "&:hover fieldset": {
+                borderColor: themeStyles.borderHover,
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#3B82F6",
+              },
+            },
+            "& .MuiInputBase-input": {
+              color: themeStyles.text.primary,
+            },
+          }}
         />
         <Stack direction="row" spacing={1} sx={{ flexWrap: "wrap", gap: 1 }}>
           {CATEGORIES.map((category) => (
-            <StyledChip
+            <Chip
               key={category}
               label={category}
               onClick={() => setSelectedCategory(category)}
@@ -313,11 +341,22 @@ export default function Snippets() {
               sx={{
                 backgroundColor:
                   selectedCategory === category ? "#3B82F6" : "transparent",
-                color: selectedCategory === category ? "white" : "gray",
+                color:
+                  selectedCategory === category
+                    ? "white"
+                    : themeStyles.text.secondary,
                 borderColor:
                   selectedCategory === category
                     ? "#3B82F6"
-                    : "rgba(255,255,255,0.2)",
+                    : themeStyles.borderColor,
+                fontSize: "11px",
+                fontWeight: 500,
+                "&:hover": {
+                  backgroundColor:
+                    theme === "light"
+                      ? "rgba(0,0,0,0.1)"
+                      : "rgba(255,255,255,0.1)",
+                },
               }}
             />
           ))}
@@ -337,7 +376,7 @@ export default function Snippets() {
         }}
       >
         {filteredSnippets.map((snippet) => (
-          <StyledCard
+          <Card
             key={snippet.id}
             className={styles.snippetCard}
             sx={{
@@ -347,6 +386,16 @@ export default function Snippets() {
               flex: "1 1 280px",
               display: "flex",
               flexDirection: "column",
+              backgroundColor: themeStyles.card.backgroundColor,
+              borderRadius: "20px",
+              border: `1px solid ${themeStyles.borderColor}`,
+              transition: "all 0.3s ease",
+              cursor: "pointer",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                boxShadow: themeStyles.shadowHover,
+                border: `1px solid ${themeStyles.borderHover}`,
+              },
             }}
           >
             <CardContent sx={{ padding: 3 }}>
@@ -362,7 +411,7 @@ export default function Snippets() {
                       variant="h6"
                       sx={{
                         fontWeight: 600,
-                        color: "white",
+                        color: themeStyles.text.primary,
                         marginBottom: 1,
                         lineHeight: 1.3,
                       }}
@@ -371,8 +420,10 @@ export default function Snippets() {
                     </Typography>
                     <Typography
                       variant="body2"
-                      color="gray"
-                      sx={{ lineHeight: 1.5 }}
+                      sx={{
+                        lineHeight: 1.5,
+                        color: themeStyles.text.secondary,
+                      }}
                     >
                       {snippet.description}
                     </Typography>
@@ -383,10 +434,13 @@ export default function Snippets() {
                 <Box
                   className={styles.codePreview}
                   sx={{
-                    backgroundColor: "rgba(15, 23, 42, 0.8)",
+                    backgroundColor:
+                      theme === "light"
+                        ? "rgba(0,0,0,0.05)"
+                        : "rgba(15, 23, 42, 0.8)",
                     borderRadius: "10px",
                     padding: 2,
-                    border: "1px solid rgba(255,255,255,0.1)",
+                    border: `1px solid ${themeStyles.borderColor}`,
                     maxHeight: "120px",
                     overflow: "hidden",
                     position: "relative",
@@ -413,11 +467,19 @@ export default function Snippets() {
                   sx={{ flexWrap: "wrap", gap: 1 }}
                 >
                   {snippet.tags.map((tag) => (
-                    <StyledChip
+                    <Chip
                       key={tag}
                       label={tag}
                       size="small"
-                      sx={{ fontSize: "10px" }}
+                      sx={{
+                        fontSize: "10px",
+                        backgroundColor:
+                          theme === "light"
+                            ? "rgba(0,0,0,0.1)"
+                            : "rgba(255,255,255,0.1)",
+                        color: themeStyles.text.secondary,
+                        border: `1px solid ${themeStyles.borderColor}`,
+                      }}
                     />
                   ))}
                 </Stack>
@@ -442,7 +504,10 @@ export default function Snippets() {
                     <IconButton
                       size="small"
                       className={styles.actionButton}
-                      sx={{ color: "gray", "&:hover": { color: "#3B82F6" } }}
+                      sx={{
+                        color: themeStyles.text.secondary,
+                        "&:hover": { color: "#3B82F6" },
+                      }}
                       onClick={() => window.open(snippet.githubUrl, "_blank")}
                     >
                       <GitHubIcon fontSize="small" />
@@ -450,7 +515,10 @@ export default function Snippets() {
                     <IconButton
                       size="small"
                       className={styles.actionButton}
-                      sx={{ color: "gray", "&:hover": { color: "#3B82F6" } }}
+                      sx={{
+                        color: themeStyles.text.secondary,
+                        "&:hover": { color: "#3B82F6" },
+                      }}
                       onClick={() => window.open(snippet.demoUrl, "_blank")}
                     >
                       <LaunchIcon fontSize="small" />
@@ -459,7 +527,7 @@ export default function Snippets() {
                 </Stack>
               </Stack>
             </CardContent>
-          </StyledCard>
+          </Card>
         ))}
       </Stack>
 
@@ -469,11 +537,16 @@ export default function Snippets() {
           alignItems="center"
           spacing={2}
           className={styles.emptyState}
-          sx={{ padding: 8, color: "gray" }}
+          sx={{ padding: 8, color: themeStyles.text.secondary }}
         >
           <CodeIcon sx={{ fontSize: 60, opacity: 0.5 }} />
-          <Typography variant="h6">No snippets found</Typography>
-          <Typography variant="body2">
+          <Typography variant="h6" sx={{ color: themeStyles.text.primary }}>
+            No snippets found
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{ color: themeStyles.text.secondary }}
+          >
             Try adjusting your search terms or category filter
           </Typography>
         </Stack>
